@@ -25,6 +25,17 @@ function populateDisplay() {
   reviews.forEach((review) => {
     const cardElement = document.createElement('div'); //create div for the profile cards
     cardElement.classList.add('card'); // add class to style it
+
+    const imageContainer = document.createElement('div'); // img container
+    imageContainer.classList.add('img-container'); //add img container class to style it
+
+    const imageElement = document.createElement('img');
+    imageElement.setAttribute('src', review.img);
+    imageElement.setAttribute('alt', review.alt);
+    imageContainer.append(imageElement);
+
+    cardElement.append(imageContainer);
+
     reviewContainer.append(cardElement);
   });
 }
