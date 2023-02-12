@@ -26,6 +26,9 @@ function populateDisplay() {
     const cardElement = document.createElement('div'); //create div for the profile cards
     cardElement.classList.add('card'); // add class to style it
 
+    cardElement.addEventListener('mouseover', showCard);
+    cardElement.addEventListener('mouseleave', blurCard);
+
     const imageContainer = document.createElement('div'); // img container
     imageContainer.classList.add('img-container'); //add img container class to style it
 
@@ -34,9 +37,25 @@ function populateDisplay() {
     imageElement.setAttribute('alt', review.alt);
     imageContainer.append(imageElement);
 
-    cardElement.append(imageContainer);
+    const textElement = document.createElement('p'); // profile paragraph
+    textElement.textContent = review.text;
+
+    const nameContainer = document.createElement('div'); //name container
+    nameContainer.classList.add('name-container'); // add class name to name container
+    nameContainer.textContent = review.name;
+
+    cardElement.append(imageContainer, textElement, nameContainer);
 
     reviewContainer.append(cardElement);
   });
 }
 populateDisplay();
+
+//
+function showCard() {
+  this.classList.add('active');
+}
+
+function blurCard() {
+  this.classList.remove('active');
+}
